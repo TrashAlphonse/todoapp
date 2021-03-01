@@ -140,13 +140,13 @@ $.fn.checkIfCompleted = function () {
     } 
 };
 
-dragItemsWrapper.on("dragstart touchstart", ".list-drag-drop", function(e) {
+dragItemsWrapper.on("dragstart", ".list-drag-drop", function(e) {
     dragSrcEl = $(this);
     e.originalEvent.dataTransfer.effectAllowed = 'move';
     e.originalEvent.dataTransfer.setData('text/html', dragSrcEl.html());
 });
 
-dragItemsWrapper.on("dragover touchmove", ".list-drag-drop", function(e) {
+dragItemsWrapper.on("dragover", ".list-drag-drop", function(e) {
     
     e.preventDefault();
     e.originalEvent.dataTransfer.dropEffect = 'move';
@@ -154,7 +154,7 @@ dragItemsWrapper.on("dragover touchmove", ".list-drag-drop", function(e) {
 
 });
 
-dragItemsWrapper.on("drop touchend", ".list-drag-drop", function(e) {
+dragItemsWrapper.on("drop", ".list-drag-drop", function(e) {
 
     if (dragSrcEl.html() !== $(this).html()) {
 
