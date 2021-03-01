@@ -67,23 +67,19 @@ $("#addList").click(function() {
 
 // Remove lists
 
-// the click is delegated to any element in .list__current-lists having the class .list__delete
-// , even if it's added after you bound the event handler.
-$("#currentLists").on("click", ".list__delete", function() {
+// Delegated event because lists are created dynamically
 
+$("#currentLists").on("click", ".list__delete", function() {
     $(this).parent().parent().remove(); 
     getActiveLists();
-    
 });
 
 
 
 // Filter lists
 
-
 $("#currentLists").on("change", ".checkbox-round_active", function() {
     
-
     if ($(this).is(":checked")) {
 
         $(this).parent().removeClass("active");
@@ -147,21 +143,25 @@ $.fn.checkIfCompleted = function () {
     } 
 };
 
+
 dragItemsWrapper.on("dragstart", ".list-drag-drop", function(e) {
+    $(this).css("opacity", "0.4");
     dragSrcEl = $(this);
     e.originalEvent.dataTransfer.effectAllowed = 'move';
     e.originalEvent.dataTransfer.setData('text/html', dragSrcEl.html());
 });
 
+
 dragItemsWrapper.on("dragover", ".list-drag-drop", function(e) {
-    
     e.preventDefault();
     e.originalEvent.dataTransfer.dropEffect = 'move';
     return false;
-
 });
 
 dragItemsWrapper.on("drop", ".list-drag-drop", function(e) {
+
+    e.stopPropagation();
+    dragSrcEl.css("opacity", "1");
 
     if (dragSrcEl.html() !== $(this).html()) {
 
@@ -173,8 +173,9 @@ dragItemsWrapper.on("drop", ".list-drag-drop", function(e) {
         $(this).checkIfCompleted();
       }
 
-})
+     return false; 
 
+})
 
 //Drag and Drop on mobile devices:
 // DragDropTouch polyfill: https://github.com/Bernardo-Castilho/dragdroptouch
