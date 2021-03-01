@@ -23,10 +23,10 @@ function addList() {
     const newList = $("#newList").val();
     const currentListsLength =  $(".list-drag-drop").length;
     const listHtml = [
-        '<div class="list-drag-drop" draggable="true">',
+        '<div class="list-drag-drop">',
         '<div class="list__panel active">',
         '<input type="checkbox" id="chooseList" class="checkbox-round checkbox-round_active pointer" title="Mark as completed">',
-        '<label class="list__text" for="chooseList">' + newList + '</label>',
+        '<label class="list__text" draggable="true">' + newList + '</label>',
         '<span class="list__delete pointer" role="button" title="Delete list"><img src="images/icon-cross.svg" alt="Delete list"></span>',
         '</div>',
         '</div>'
@@ -176,9 +176,8 @@ dragItemsWrapper.on("drop", ".list-drag-drop", function(e) {
 })
 
 
-//Mobile DnD
-
-
+//Drag and Drop on mobile devices:
+// DragDropTouch polyfill: https://github.com/Bernardo-Castilho/dragdroptouch
 
 
 })
