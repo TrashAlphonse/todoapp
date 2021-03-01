@@ -47,6 +47,8 @@ function addList() {
         alert("What's your task for today?)")
     }
 
+    $(".list-drag-drop").draggable();
+
 };
 
 
@@ -133,50 +135,59 @@ $(".list__clear").click(function() {
 
 // lib for Mobile devices
 
-$('.list-drag-drop').draggable({
-    delegate: "#currentLists", // selector of delegate element
-  });
-    
-})
-
-let dragSrcEl = null;
-const dragItemsWrapper = $("#currentLists");
-
-$.fn.checkIfCompleted = function () {
-    if (this.children(".list__panel").hasClass("completed")) {
-        this.find(".checkbox-round_active").prop('checked', true);  
-    } 
-};
-
-dragItemsWrapper.on("dragstart", ".list-drag-drop", function(e) {
-    dragSrcEl = $(this);
-    e.originalEvent.dataTransfer.effectAllowed = 'move';
-    e.originalEvent.dataTransfer.setData('text/html', dragSrcEl.html());
+$(".list-drag-drop").draggable({
+    handle: false,
+    delegate: false, // selector of delegate element
+    revert: false,
+    placeholder: false,
+    droptarget: false,
+    container: false,
+    scroll: false,
+    //callbacks
+    update: null,
+    drop: null
 });
 
-dragItemsWrapper.on("dragover", ".list-drag-drop", function(e) {
+
+// let dragSrcEl = null;
+// const dragItemsWrapper = $("#currentLists");
+
+// $.fn.checkIfCompleted = function () {
+//     if (this.children(".list__panel").hasClass("completed")) {
+//         this.find(".checkbox-round_active").prop('checked', true);  
+//     } 
+// };
+
+// dragItemsWrapper.on("dragstart", ".list-drag-drop", function(e) {
+//     dragSrcEl = $(this);
+//     e.originalEvent.dataTransfer.effectAllowed = 'move';
+//     e.originalEvent.dataTransfer.setData('text/html', dragSrcEl.html());
+// });
+
+// dragItemsWrapper.on("dragover", ".list-drag-drop", function(e) {
     
-    e.preventDefault();
-    e.originalEvent.dataTransfer.dropEffect = 'move';
-    return false;
+//     e.preventDefault();
+//     e.originalEvent.dataTransfer.dropEffect = 'move';
+//     return false;
 
-});
+// });
 
-dragItemsWrapper.on("drop", ".list-drag-drop", function(e) {
+// dragItemsWrapper.on("drop", ".list-drag-drop", function(e) {
 
-    if (dragSrcEl.html() !== $(this).html()) {
+//     if (dragSrcEl.html() !== $(this).html()) {
 
-        dragSrcEl.html($(this).html());
-        dragSrcEl.checkIfCompleted();
+//         dragSrcEl.html($(this).html());
+//         dragSrcEl.checkIfCompleted();
 
 
-        $(this).html(e.originalEvent.dataTransfer.getData('text/html'));
-        $(this).checkIfCompleted();
-      }
+//         $(this).html(e.originalEvent.dataTransfer.getData('text/html'));
+//         $(this).checkIfCompleted();
+//       }
+
+// })
+
+
+
+
 
 })
-
-
-
-
-
