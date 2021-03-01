@@ -80,13 +80,6 @@ $("#currentLists").on("click", ".list__delete", function() {
 
 // Filter lists
 
-$("#currentLists").on("click", ".checkbox-round_active", function() {
-    if ($(this).prop("checked", false)) {
-        $(this).prop("checked", true);
-    } else {
-        $(this).prop("checked", false);
-    }
-})
 
 $("#currentLists").on("change", ".checkbox-round_active", function() {
     
