@@ -21,9 +21,10 @@ getActiveLists();
 function addList() {
 
     const newList = $("#newList").val();
+    const currentListsLength =  $(".list-drag-drop").length;
     const listHtml = [
-        '<div class="list-drag-drop">',
-        '<div class="list__panel active" draggable="true">',
+        '<div class="list-drag-drop" draggable="true">',
+        '<div class="list__panel active">',
         '<input type="checkbox" id="chooseList" class="checkbox-round checkbox-round_active pointer" title="Mark as completed">',
         '<label class="list__text" for="chooseList">' + newList + '</label>',
         '<span class="list__delete pointer" role="button" title="Delete list"><img src="images/icon-cross.svg" alt="Delete list"></span>',
@@ -34,7 +35,7 @@ function addList() {
     if (newList !== '') {
         if ($(".container").hasClass("light")) {
             $(".list__current-lists").append(listHtml.join(''));
-            $(".list__panel").addClass("light");
+            $(".list-drag-drop").eq(currentListsLength).children(".list__panel").addClass("light");
             $("#newList").val('');
             
         } else {
@@ -70,7 +71,7 @@ $("#addList").click(function() {
 // , even if it's added after you bound the event handler.
 $("#currentLists").on("click", ".list__delete", function() {
 
-    $(this).parent().remove(); 
+    $(this).parent().parent().remove(); 
     getActiveLists();
     
 });
@@ -79,9 +80,19 @@ $("#currentLists").on("click", ".list__delete", function() {
 
 // Filter lists
 
+$("#currentLists").on("click", ".checkbox-round_active", function() {
+    if ($(this).prop("checked", false)) {
+        $(this).prop("checked", true);
+    } else {
+        $(this).prop("checked", false);
+    }
+})
 
 $("#currentLists").on("change", ".checkbox-round_active", function() {
+    
+
     if ($(this).is(":checked")) {
+
         $(this).parent().removeClass("active");
         $(this).parent().addClass("completed");
         
@@ -125,7 +136,7 @@ $(".list__filter span").click(function() {
 // Clear completed
 
 $(".list__clear").click(function() {
-    $(".list__panel.completed").remove();
+    $(".list__panel.completed").parent().remove();
 });
 
 
