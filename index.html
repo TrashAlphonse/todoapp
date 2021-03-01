@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  
+  <title>Frontend Mentor | Todo app</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  
+  
+</head>
+<body>
+
+<div class="container">
+  <article class="list">
+    <header class="list__header">
+      <h1 class="list__heading">TODO</h1>
+      <span role="button" title="toggle light/dark mode" id="toggleMode" class="list__toggle-mode pointer"></span>
+    </header> 
+    <section>
+      <h2 class="screenreader">Create a new list:</h2>
+      <div class="list__panel list__panel_new">
+        <button title="Add new list" type="submit" id="addList" class="checkbox-round checkbox-round_button pointer"></button>
+        <input type="text" id="newList" class="list__input" placeholder="Create a new todo...">
+      </div>
+    </section>
+    <section class="list__current-lists" id="currentLists">
+
+      <h2 class="screenreader">Your current lists:</h2>
+
+      <div class="list-drag-drop" draggable="true">
+        <div class="list__panel active">
+          <input type="checkbox" class="checkbox-round checkbox-round_active pointer" title="Mark as completed">
+          <label class="list__text">Jog around the park 3x</label>
+          <span class="list__delete pointer" role="button" title="Delete list"><img src="images/icon-cross.svg" alt="Delete list"></span>
+        </div>
+      </div>
+
+      <div class="list-drag-drop" draggable="true">
+        <div class="list__panel active">
+          <input type="checkbox" class="checkbox-round checkbox-round_active pointer" title="Mark as completed">
+          <label class="list__text">10 minutes meditation</label>
+          <span class="list__delete pointer" role="button" title="Delete list"><img src="images/icon-cross.svg" alt="Delete list"></span>
+        </div>
+      </div>
+
+      <div class="list-drag-drop" draggable="true">
+        <div class="list__panel active">
+          <input type="checkbox" class="checkbox-round checkbox-round_active pointer" title="Mark as completed">
+          <label class="list__text">Read for 1 hour</label>
+          <span class="list__delete pointer" role="button" title="Delete list"><img src="images/icon-cross.svg" alt="Delete list"></span>
+        </div>
+      </div>
+
+      <div class="list-drag-drop" draggable="true">
+        <div class="list__panel active">
+          <input type="checkbox" class="checkbox-round checkbox-round_active pointer" title="Mark as completed">
+          <label class="list__text">Pick up groceries</label>
+          <span class="list__delete pointer" role="button" title="Delete list"><img src="images/icon-cross.svg" alt="Delete list"></span>
+        </div>
+      </div>
+
+      <div class="list-drag-drop" draggable="true">
+        <div class="list__panel active">
+          <input type="checkbox" class="checkbox-round checkbox-round_active pointer" title="Mark as completed">
+          <label class="list__text">Complete ToDo App on Frontent Mentor</label>
+          <span class="list__delete pointer" role="button" title="Delete list"><img src="images/icon-cross.svg" alt="Delete list"></span>
+        </div>
+      </div>
+     
+    </section>
+    <footer class="list__footer">
+      <span class="list__items-left"></span>
+      <span role="button" class="list__clear pointer">Clear Completed</span>
+    </footer>
+    <div class="list__filter">
+      <span role="button" id="showAll" class="active pointer">All</span>
+      <span role="button" id="showActive" class="pointer">Active</span>
+      <span role="button" id="showCompleted" class="pointer">Completed</span>
+    </div>
+  </article>
+
+  <p class="hint">Drag and drop to reorder list</p>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by Sigma.
+  </div>
+</div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
