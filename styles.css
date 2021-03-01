@@ -387,6 +387,10 @@ h1 {
         background-color: var(--very-dark-desaturated-blue);
     }
 
+    .list__filter span {
+        margin: 0 10px;
+    }
+
     .list__footer.light + .list__filter {
         background-color: var(--light-very-light-gray);
     }

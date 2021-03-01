@@ -131,6 +131,14 @@ $(".list__clear").click(function() {
 // Drag and drop
 // Great article: https://web.dev/drag-and-drop/
 
+// lib for Mobile devices
+
+$('.list-drag-drop').draggable({
+    delegate: "#currentLists", // selector of delegate element
+  });
+    
+})
+
 let dragSrcEl = null;
 const dragItemsWrapper = $("#currentLists");
 
@@ -168,7 +176,7 @@ dragItemsWrapper.on("drop", ".list-drag-drop", function(e) {
 
 })
 
-})
+
 
 
 
