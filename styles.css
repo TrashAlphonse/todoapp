@@ -249,7 +249,7 @@ h1 {
 
 
 .list__text {
-    /* max-width: 80%; */
+    max-width: 80%;
     text-align: left;
     line-height: 1.5;
     padding: 20px 0;
